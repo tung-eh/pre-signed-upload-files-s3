@@ -1,0 +1,5 @@
+# serverless output 
+/.serverless
+
+# dependencies
+/node_modules

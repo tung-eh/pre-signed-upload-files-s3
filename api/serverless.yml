@@ -1,0 +1,22 @@
+service: presignedPostData
+
+provider:
+  name: aws
+  region: ap-southeast-1
+  runtime: nodejs8.10
+  iamRoleStatements:
+    - Effect: "Allow"
+      Action: "s3:PutObject"
+      Resource: "arn:aws:s3:::tungteng-test/*"
+
+plugins:
+  - serverless-offline
+
+functions:
+  getPresignedPostData:
+    handler: handler.getPresignedPostData
+    events:
+      - http:
+          path: presigned-post-data
+          method: get
+          cors: true
